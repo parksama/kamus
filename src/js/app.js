@@ -10,10 +10,12 @@ import { createRoot } from 'react-dom/client';
 
 import Home from './pages/Home';
 import Header from './pages/Header';
+import SavedWords from './pages/SavedWords';
 
 window.React = React;
 
-const base_url = '/kamus/dist';
+const container = document.querySelector('#app');
+const base_url = container.dataset.baseurl;
 window.base_url = base_url;
 
 const app = (
@@ -21,25 +23,10 @@ const app = (
 		<Header />
 		<Routes>
 			<Route exact path="/" element={<Home />} />
-			{/* <Route path="/import/product">
-				<NewImportProduct />
-			</Route>
-			<Route path="/import/variant-meta">
-				<VariantMeta />
-			</Route>
-			<Route path="/data-reconcile">
-				<DataReconcile />
-			</Route>
-			<Route path="/data-transform">
-				<DataTransform />
-			</Route>
-			<Route path="/bundle">
-				<ProductBundle />
-			</Route> */}
+			<Route path="/simpanan" element={<SavedWords />} />
 		</Routes>
 	</Router>
 );
 
-const container = document.querySelector('#app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(app);
